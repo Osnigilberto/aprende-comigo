@@ -1,0 +1,94 @@
+.contatoContainer {
+    padding: 2rem;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contatoTitle {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .contatoText {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+  
+  .contatoEmail {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .label {
+    font-size: 1rem;
+    color: var(--color-text);
+    display: block; /* Mudei para "block" para que o label ocupe toda a linha */
+    margin-bottom: 8px; /* Espaçamento entre o label e o campo */
+  }
+  
+  .input,
+  .textarea {
+    width: 100%; /* Garante que os campos ocupem toda a largura disponível */
+    padding: 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .input:focus,
+  .textarea:focus {
+    border-color: var(--color-secondary);
+  }
+  
+  
+  .button {
+    padding: 1rem 2rem;
+    background-color: var(--color-secondary);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center;
+    margin-top: 1rem;
+  }
+  
+  .button:hover {
+    background-color: var(--color-primary);
+  }
+  
+  .button:active {
+    transform: scale(0.98);
+  }
+  
+  .button:focus {
+    box-shadow: 0 0 0 3px rgba(255, 215, 56, 0.5);
+  }
+  
+  .feedbackMessage {
+    font-size: 1rem;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-top: 1rem;
+  }
+  

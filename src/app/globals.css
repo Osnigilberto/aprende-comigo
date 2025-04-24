@@ -1,0 +1,82 @@
+/* globals.css */
+:root {
+  --color-bg: #fdf6ec;        /* Fundo claro e quente */
+  --color-text: #4e342e;      /* Marrom escuro, fácil de ler */
+  --color-primary: #a1887f;   /* Marrom terroso */
+  --color-secondary: #6d8c6e; /* Verde arruda */
+  --color-accent: #fdd835;    /* Amarelo sol */
+  --color-hover: #8d6e63;     /* Marrom mais escuro pro hover */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--font-sans, sans-serif); /* Definição clara de fallback para fontes */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-hover);
+}
+
+button {
+  font-family: inherit; /* Evitar sobrescrita desnecessária */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Adicionando uma regra para evitar que o foco em inputs sobrescreva outros estilos */
+input,
+textarea,
+button {
+  outline: none; /* Remove outline de padrão do navegador */
+}
+
+/* Definindo os campos de formulário para garantir consistência */
+input,
+textarea {
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  border: 2px solid var(--color-primary);
+}
+
+/* Garantindo que o botão tenha um estilo neutro para evitar conflitos */
+button {
+  padding: 1rem 2rem;
+  background-color: var(--color-secondary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--color-primary);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus {
+  box-shadow: 0 0 0 3px rgba(255, 215, 56, 0.5);
+}

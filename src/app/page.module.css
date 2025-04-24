@@ -1,0 +1,84 @@
+/* Estilo geral */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--color-bg);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ========== Banner de Boas-Vindas ========== */
+.welcomeBanner {
+  background-image: url('/neta-papaya1.png');
+  background-size: contain; /* Garante que a imagem inteira apareça */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-color: var(--color-primary); /* Cor de fundo caso a imagem não ocupe todo o espaço */
+  color: white;
+  height: 300px; /* Altura mais compacta */
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.welcomeBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* leve escurecimento para contraste */
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.welcomeBanner h1,
+.welcomeBanner p {
+  position: relative;
+  z-index: 2;
+  margin: 0.5rem 0;
+}
+
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .welcomeBanner {
+    padding: 2rem;
+  }
+
+  .welcomeBanner h1 {
+    font-size: 2rem;
+  }
+
+  .welcomeBanner p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .welcomeBanner h1 {
+    font-size: 1.5rem;
+  }
+
+  .welcomeBanner p {
+    font-size: 0.9rem;
+  }
+}

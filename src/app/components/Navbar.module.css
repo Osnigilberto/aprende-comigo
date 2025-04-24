@@ -1,0 +1,121 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-primary);
+  position: relative;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+}
+
+.title {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLinks ul {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  list-style: none;
+}
+
+.navLinks a,
+.navLinks button {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background: none;  /* Remove background de botões */
+  border: none;  /* Remove borda de botões */
+  cursor: pointer;  /* Faz o botão ter o cursor de mão */
+  padding: 0.5rem 1rem;  /* Adicionando padding fixo */
+  height: 40px;  /* Garantindo que todos os itens tenham a mesma altura */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLinks a:hover,
+.navLinks button:hover {
+  color: var(--color-accent);
+  text-decoration: underline;  /* Efeito de sublinhado */
+}
+
+.toggleButton {
+  display: none;
+  background-color: #8d6e63; /* marrom terroso */
+  border-radius: 12px;
+  padding: 0.6rem;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.toggleButton:hover {
+  background-color: #a1887f; /* tom mais claro */
+  transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .toggleButton {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    display: none;
+    z-index: 1000;
+  }
+
+  .navLinks.show {
+    display: flex;
+  }
+
+  .navLinks ul {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .navLinks ul li {
+    width: 100%;
+  }
+
+  .navLinks ul li a,
+  .navLinks ul li button {
+    width: 100%;
+    display: block;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem;
+    text-align: center;
+  }
+}

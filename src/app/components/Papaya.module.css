@@ -1,0 +1,39 @@
+.papaya {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.papaya img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  background-color: #e0f7fa;
+  padding: 0.5rem;
+}
+
+.balao {
+  position: relative;
+  background-color: #e0faff;
+  padding: 1rem 1.2rem;
+  border-radius: 20px;
+  max-width: 300px;
+  font-size: 1rem;
+  color: #004d40;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.balao::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 10px solid transparent;
+  border-right-color: #e0faff;
+}
