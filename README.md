@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aprende Comigo
 
-## Getting Started
+O **Aprende Comigo** é um projeto educativo que utiliza mascotes inspirados na cultura folclórica de Florianópolis para ajudar crianças a aprender e se divertir com atividades interativas, como associação de imagens, escrita, leitura e sons de animais.
 
-First, run the development server:
+## Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **React** (com Next.js)
+- **CSS Modules** (estilos)
+- **Phosphor Icons** (para ícones)
+- **React hooks** (para interação)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Mascotes
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Vovó Neta**, a Benzedeira: Uma personagem carinhosa que guia as crianças com sabedoria e amor.
+- **Papaya**, o Boi de Mamão: Um personagem brincalhão que traz energia e diversão para o aprendizado.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades
 
-## Learn More
+- **Atividades Interativas**: Através de cards de atividades, as crianças podem escolher jogos educativos como:
+  - Associação imagem-palavra
+  - Escrita com arraste de letras
+  - Leitura guiada
+  - Sons e animais
+  - Fala com os mascotes
 
-To learn more about Next.js, take a look at the following resources:
+## Como Rodar o Projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/OsniFerreira/aprende-comigo.git
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Navegue até o diretório do projeto:
+    ```bash
+    cd aprende-comigo
+    ```
 
-## Deploy on Vercel
+3. Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Execute o projeto:
+    ```bash
+    npm run dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Abra o navegador em `http://localhost:3000`.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
