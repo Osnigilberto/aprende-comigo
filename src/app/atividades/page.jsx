@@ -1,68 +1,96 @@
-// src/app/atividades/page.jsx
-
 'use client';
-import React from 'react';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './Atividades.module.css';
-import Papaya from '../components/Papaya';
 import VovoNeta from '../components/VovoNeta';
-import Link from 'next/link';
+import Papaya from '../components/Papaya';
+import AtividadeCard from '../components/AtividadeCard';
 
-const atividadesList = [
-  {
-    emoji: '🖼️',
-    titulo: 'Associação imagem-palavra',
-    descricao: 'Ouça a pergunta, observe a imagem e escolha a resposta correta.',
-    rota: '/atividades/associacao'
-  },
-  {
-    emoji: '🔤',
-    titulo: 'Escrita com arraste de letras',
-    descricao: 'Forme a palavra correta arrastando as letras na ordem certa.',
-    rota: '/atividades/escrita'
-  },
-  {
-    emoji: '📖',
-    titulo: 'Leitura guiada',
-    descricao: 'Leia e ouça histórias simples, com palavras destacadas.',
-    rota: '/atividades/leitura'
-  },
-  {
-    emoji: '🐾',
-    titulo: 'Sons e animais',
-    descricao: 'Descubra qual animal faz cada som. Miau, au au... quem será?',
-    rota: '/atividades/sons'
-  },
-  {
-    emoji: '🧠',
-    titulo: 'Fala com o mascote',
-    descricao: 'Converse com seu mascote e aprenda curiosidades divertidas!',
-    rota: '/atividades/conversa'
-  }
-];
+export default function Atividades() {
+  const router = useRouter();
+  const [mentor, setMentor] = useState(null);
 
-const Atividades = () => {
+  useEffect(() => {
+    const escolhido = localStorage.getItem('mentorEscolhido');
+    if (!escolhido) {
+      router.push('/escolher-mentor');
+    } else {
+      setMentor(escolhido);
+    }
+  }, []);
+
+  if (!mentor) return null;
+
+  const atividades = [
+    {
+      titulo: 'Associação Imagem-Palavra',
+      descricao: 'Vamos aprender a associar imagens e palavras com diversão!',
+      imagem: '/atividades/associacao-imagem-palavra.png',
+    },
+    {
+      titulo: 'Escrita com Arraste de Letras',
+      descricao: 'Arraste as letras para formar palavras e melhorar sua escrita!',
+      imagem: '/atividades/escrita-arraste-letras.png',
+    },
+    {
+      titulo: 'Leitura Guiada',
+      descricao: 'Leitura de livrinhos com narração e ilustrações divertidas!',
+      imagem: '/atividades/leitura-guiada.png',
+    },
+    {
+      titulo: 'Sons e Animais',
+      descricao: 'Ouça os sons dos animais e adivinhe qual é o animal!',
+      imagem: '/atividades/sons-animais.png',
+    },
+    {
+      titulo: 'Fala com o Mascote',
+      descricao: 'Pergunte ao mascote e ele te responderá com histórias e curiosidades!',
+      imagem: '/atividades/fala-com-mascote.png',
+    }
+  ];
+
+  const handleAtividadeClick = (titulo) => {
+    const slug = titulo
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // remove acentos
+      .replace(/ /g, '-');
+  
+    router.push(`/atividades/${slug}`);
+  };
+  
+
   return (
-    <div className={styles.atividade}>
-      <div className={styles.header}>
-        <VovoNeta />
-        <Papaya />
+    <main className={styles.mainContent}>
+      <h1 className={styles.titulo}>Vamos aprender brincando!</h1>
+
+      {/* Mentor no topo com fala ativada */}
+      <div className={styles.mentorWrapper}>
+        {mentor === 'vovoNeta' && <VovoNeta interativa={true} />}
+        {mentor === 'papaya' && <Papaya interativa={true} />}
       </div>
 
-      <h1>Vamos brincar e aprender?</h1>
-      <p className={styles.intro}>
-        Escolha uma das atividades abaixo para começar sua jornada com a Vovó Neta e o Papaya.
-      </p>
-
-      <div className={styles.cards}>
-        {atividadesList.map((atividade, index) => (
-          <Link href={atividade.rota} key={index} className={styles.card}>
-            <h2>{atividade.emoji} {atividade.titulo}</h2>
-            <p>{atividade.descricao}</p>
-          </Link>
+      {/* Cards das atividades */}
+      <div className={styles.gridAtividades}>
+        {atividades.map((atividade, index) => (
+          <AtividadeCard
+            key={index}
+            {...atividade}
+            onClick={() => handleAtividadeClick(atividade.titulo)}
+          />
         ))}
       </div>
-    </div>
-  );
-};
 
-export default Atividades;
+      <button
+        className={styles.trocarMentorBtn}
+        onClick={() => {
+          localStorage.removeItem('mentorEscolhido');
+          router.push('/escolher-mentor');
+        }}
+      >
+        Trocar Mentor
+      </button>
+    </main>
+  );
+}

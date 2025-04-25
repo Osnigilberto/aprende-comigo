@@ -30,7 +30,7 @@ const Navbar = () => {
           <li><a href="/">Início</a></li>
           <li><button onClick={() => scrollToSection('sobreNos')}>Sobre Nós</button></li>
           <li><button onClick={() => scrollToSection('contato')}>Contato</button></li>
-          <li><Link href="/atividades">Atividades</Link></li>{/* "Atividades" abre nova página */}
+          <li><Link href="/escolher-mentor">Atividades</Link></li>{/* "Atividades" abre nova página */}
         </ul>
       </nav>
 

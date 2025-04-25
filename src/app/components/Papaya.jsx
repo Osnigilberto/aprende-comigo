@@ -8,31 +8,26 @@ const frases = [
   'Boi bumbá dançou só pra você! Vamos continuar brincando?'
 ];
 
-const Papaya = () => {
+const Papaya = ({ interativa = false, fraseUnica = null }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const synth = window.speechSynthesis;
-    const utter = new SpeechSynthesisUtterance(frases[index]);
-    utter.lang = 'pt-BR';
-    synth.speak(utter);
+    if (interativa && !fraseUnica) {
+      const interval = setInterval(() => {
+        setIndex((prev) => (prev + 1) % frases.length);
+      }, 8000);
 
-    const interval = setInterval(() => {
-      const next = (index + 1) % frases.length;
-      setIndex(next);
-    }, 8000);
+      return () => clearInterval(interval);
+    }
+  }, [interativa, fraseUnica]);
 
-    return () => {
-      synth.cancel();
-      clearInterval(interval);
-    };
-  }, [index]);
+  const fraseExibida = fraseUnica || frases[index];
 
   return (
     <div className={styles.papaya}>
-      <img src="/papaya.png" alt="Papaya" />
+      <img className={styles.imagem} src="/papaya.png" alt="Papaya" />
       <div className={styles.balao}>
-        <p>{frases[index]}</p>
+        <p>{fraseExibida}</p>
       </div>
     </div>
   );

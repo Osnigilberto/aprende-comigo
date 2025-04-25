@@ -1,0 +1,52 @@
+.container {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .titulo {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #5c3b1e;
+  }
+  
+  .subtitulo {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #7a5c3f;
+  }
+  
+  .mentores {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .mentorCard {
+    border: 3px solid #caa472;
+    border-radius: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff9f1;
+  }
+  
+  .mentorCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  
+  
+  @media (max-width: 768px) {
+    .mentores {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .mentorCard {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  

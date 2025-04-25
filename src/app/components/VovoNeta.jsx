@@ -8,31 +8,26 @@ const frases = [
   'Minha criança, cada passo seu é uma sementinha plantada com amor.'
 ];
 
-const VovoNeta = () => {
+const VovoNeta = ({ interativa = false, fraseUnica = null }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const synth = window.speechSynthesis;
-    const utter = new SpeechSynthesisUtterance(frases[index]);
-    utter.lang = 'pt-BR';
-    synth.speak(utter);
+    if (interativa && !fraseUnica) {
+      const interval = setInterval(() => {
+        setIndex((prev) => (prev + 1) % frases.length);
+      }, 8000);
 
-    const interval = setInterval(() => {
-      const next = (index + 1) % frases.length;
-      setIndex(next);
-    }, 8000);
+      return () => clearInterval(interval);
+    }
+  }, [interativa, fraseUnica]);
 
-    return () => {
-      synth.cancel();
-      clearInterval(interval);
-    };
-  }, [index]);
+  const fraseExibida = fraseUnica || frases[index];
 
   return (
     <div className={styles.vovoNeta}>
-      <img src="/neta.png" alt="Vovó Neta" />
+      <img className={styles.imagem} src="/neta.png" alt="Vovó Neta" />
       <div className={styles.balao}>
-        <p>{frases[index]}</p>
+        <p>{fraseExibida}</p>
       </div>
     </div>
   );
