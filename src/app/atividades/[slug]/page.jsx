@@ -2,6 +2,9 @@
 
 import { useParams } from 'next/navigation';
 import AssociacaoImagemPalavra from '../../components/AssociacaoImagemPalavra';
+import FormeAPalavra from '../../components/FormeAPalavra';
+import LeituraGuiada from '../../components/LeituraGuiada';
+import Pintura from '../../components/Pintura';
 
 export default function AtividadePage() {
   const { slug } = useParams();
@@ -9,8 +12,9 @@ export default function AtividadePage() {
   // Aqui você pode futuramente expandir para outras atividades:
   const componentesPorSlug = {
     'associacao-imagem-palavra': <AssociacaoImagemPalavra />,
-    // 'escrita-com-arraste-de-letras': <EscritaArrasteLetras />,
-    // 'leitura-guiada': <LeituraGuiada />,
+    'forme-a-palavra': <FormeAPalavra />,
+     'leitura-guiada': <LeituraGuiada />,
+     'pintura': <Pintura />,
     // etc.
   };
 

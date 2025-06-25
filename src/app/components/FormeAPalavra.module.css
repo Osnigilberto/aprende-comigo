@@ -1,0 +1,49 @@
+.container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .imagemPalavra {
+    display: block;
+    margin: 0 auto; /* Isso centraliza a imagem */
+    width: 200px; /* Defina a largura desejada para as imagens */
+    height: auto;
+  }
+  
+  .palavraFormada {
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  
+  .letrasContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .botaoLetra {
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: #e97474;
+    border-radius: 5px;
+  }
+  
+  .feedback {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: green;
+  }
+  
+  .botaoVoltar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #e97474;
+    border: none;
+    border-radius: 5px;
+  }
+  

@@ -29,7 +29,7 @@ export default function Atividades() {
       imagem: '/atividades/associacao-imagem-palavra.png',
     },
     {
-      titulo: 'Escrita com Arraste de Letras',
+      titulo: 'Forme a Palavra',
       descricao: 'Arraste as letras para formar palavras e melhorar sua escrita!',
       imagem: '/atividades/escrita-arraste-letras.png',
     },
@@ -47,6 +47,11 @@ export default function Atividades() {
       titulo: 'Fala com o Mascote',
       descricao: 'Pergunte ao mascote e ele te responderá com histórias e curiosidades!',
       imagem: '/atividades/fala-com-mascote.png',
+    },
+    {
+      titulo: 'Pintura',
+      descricao: 'Pintura com o Papaya e o Vovo Neta!',
+      imagem: '/atividades/pintura.png',
     }
   ];
 

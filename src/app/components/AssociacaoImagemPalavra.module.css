@@ -1,62 +1,35 @@
-.botaoIniciar {
-    padding: 1rem 2rem;
-    background-color: #f5c26b;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-bottom: 1rem;
-    transition: background 0.3s;
-  }
-  
-  .botaoIniciar:hover {
-    background-color: #e2a94e;
-  }
- 
+.container {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-.atividadeContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .imagemContainer {
-    margin-bottom: 1rem;
-  }
-  
-  .imagem {
-    max-width: 200px;
-    margin-bottom: 1rem;
-  }
-  
-  .opcoesContainer {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 2rem;
-  }
-  
-  .botaoOpcao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-  
-  .opcaoImagem {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: 0.5rem;
-  }
-  
-  .feedback {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    color: green;
-  }
-  
+.titulo {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #3d3d3d;
+}
+
+.personagem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagemPersonagem {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.balao {
+  background: #fffaf0;
+  border: 2px solid #d4a373;
+  padding: 15px 20px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  color: #5c3a21;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+}
