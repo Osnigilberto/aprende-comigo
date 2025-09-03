@@ -1,10 +1,11 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import AssociacaoImagemPalavra from '../../components/AssociacaoImagemPalavra';
-import FormeAPalavra from '../../components/FormeAPalavra';
-import LeituraGuiada from '../../components/LeituraGuiada';
-import Pintura from '../../components/Pintura';
+import AssociacaoImagemPalavra from '@/app/components/AssociacaoImagemPalavra';
+import FormeAPalavra from '@/app/components/FormeAPalavra';
+import LeituraGuiada from '@/app/components/LeituraGuiada';
+import Pintura from '@/app/components/Pintura';
+import SonsEAnimais from '@/app/components/sonsEAnimais';
 
 export default function AtividadePage() {
   const { slug } = useParams();
@@ -14,6 +15,7 @@ export default function AtividadePage() {
     'associacao-imagem-palavra': <AssociacaoImagemPalavra />,
     'forme-a-palavra': <FormeAPalavra />,
      'leitura-guiada': <LeituraGuiada />,
+     'sons-e-animais': <SonsEAnimais />,
      'pintura': <Pintura />,
     // etc.
   };

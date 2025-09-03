@@ -1,0 +1,148 @@
+.container {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.voltarButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.voltarButton:hover {
+  background-color: #ccc;
+}
+
+.titulo {
+  font-size: 24px;
+  margin: 60px 0 20px 0;
+}
+
+.pontuacao {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.botaoIniciar,
+.botaoVerificar,
+.botaoReset {
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 15px 10px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.botaoIniciar {
+  background-color: #4caf50;
+  color: white;
+}
+
+.botaoIniciar:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.botaoVerificar {
+  background-color: #2196f3;
+  color: white;
+}
+
+.botaoVerificar:hover {
+  background-color: #1e88e5;
+  transform: scale(1.05);
+}
+
+.botaoReset {
+  background-color: #f44336;
+  color: white;
+}
+
+.botaoReset:hover {
+  background-color: #e53935;
+  transform: scale(1.05);
+}
+
+.animalImagem {
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animalImagem.acerto {
+  animation: pular 0.8s ease;
+  box-shadow: 0 0 25px gold;
+}
+
+@keyframes pular {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-20px); }
+  50% { transform: translateY(0); }
+  70% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.inputContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputResposta {
+  padding: 10px;
+  font-size: 16px;
+  width: 200px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.feedback {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Media Queries para desktop */
+@media (min-width: 768px) {
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  .voltarButton {
+    top: 20px;
+    left: 20px;
+  }
+
+  .titulo {
+    margin-top: 20px;
+  }
+
+  .inputContainer {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .botaoIniciar,
+  .botaoReset {
+    margin: 20px;
+  }
+}

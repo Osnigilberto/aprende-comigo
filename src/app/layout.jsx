@@ -1,4 +1,3 @@
-// src/app/layout.jsx
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -16,17 +15,28 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Aprende Comigo",
-  description: "Projeto de aprendizado e diversão",
+  description: "Aplicativo educativo para aprender brincando!",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
+      <head>
+        {/* Favicon padrão */}
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="shortcut icon" href="/favicon-ico.ico" />
+
+        {/* Ícones PWA */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+
+        {/* Tema e cor da barra */}
+        <meta name="theme-color" content="#4caf50" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Navbar />
-        <main style={{ marginTop: '60px' }}> {/* Ajuste para não sobrepor o conteúdo */}
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>

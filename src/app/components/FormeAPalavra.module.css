@@ -1,49 +1,116 @@
 .container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .imagemPalavra {
-    display: block;
-    margin: 0 auto; /* Isso centraliza a imagem */
-    width: 200px; /* Defina a largura desejada para as imagens */
-    height: auto;
-  }
-  
-  .palavraFormada {
-    font-size: 2rem;
-    margin: 20px 0;
-  }
-  
-  .letrasContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .botaoLetra {
-    padding: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border: none;
-    background-color: #e97474;
-    border-radius: 5px;
-  }
-  
-  .feedback {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: green;
-  }
-  
-  .botaoVoltar {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    background-color: #e97474;
-    border: none;
-    border-radius: 5px;
-  }
-  
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.botaoTopo {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  background-color: #ffcc5c;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.botaoTopo:hover {
+  background-color: #f1b94d;
+}
+
+.titulo {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #4a3c3c;
+}
+
+.imagemPalavra {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.palavraFormada {
+  font-size: 2.5rem;
+  margin: 25px 0;
+  min-height: 2.8rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  transition: color 0.3s;
+}
+
+/* ✅ Animação de acerto */
+.acerto {
+  color: #4caf50;
+  animation: pulse 0.6s ease forwards;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ❌ Animação de erro */
+.erro {
+  color: #e53935;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.letrasContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.botaoLetra {
+  padding: 12px 18px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  background-color: #87cefa;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.botaoLetra:hover {
+  background-color: #63b6e6;
+  transform: scale(1.1);
+}
+
+.botaoApagar,
+.botaoReiniciar {
+  margin-top: 15px;
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  color: white;
+}
+
+.botaoApagar:hover,
+.botaoReiniciar:hover {
+  background-color: #e85a5a;
+}

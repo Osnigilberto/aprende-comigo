@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './FormeAPalavra.module.css';
 
+// Lista de palavras com imagens
 const palavras = [
   { palavra: 'GATO', imagem: '/imagens/gato.png' },
   { palavra: 'CÃO', imagem: '/imagens/cao.png' },
@@ -32,77 +34,83 @@ const palavras = [
 ];
 
 const FormeAPalavra = () => {
+  const router = useRouter();
+  const [indiceAtual, setIndiceAtual] = useState(0);
   const [palavraCerta, setPalavraCerta] = useState(palavras[0].palavra);
   const [letras, setLetras] = useState([]);
   const [palavraFormada, setPalavraFormada] = useState('');
-  const [feedback, setFeedback] = useState('');
+  const [feedback, setFeedback] = useState(''); // "acerto" | "erro" | ""
 
-  // UseEffect para gerar letras embaralhadas no cliente
+  // sons (coloque em public/sons/)
+  const somAcerto = typeof Audio !== 'undefined' ? new Audio('/sons/correto.mp3') : null;
+  const somErro = typeof Audio !== 'undefined' ? new Audio('/sons/erro.mp3') : null;
+
+  // Reinicia a palavra quando muda o índice
   useEffect(() => {
-    const embaralharLetras = palavraCerta.split('').sort(() => Math.random() - 0.5);
-    setLetras(embaralharLetras);
-  }, [palavraCerta]);
+    setPalavraCerta(palavras[indiceAtual].palavra);
+    setLetras(palavras[indiceAtual].palavra.split('').sort(() => Math.random() - 0.5));
+    setPalavraFormada('');
+    setFeedback('');
+  }, [indiceAtual]);
 
   const adicionarLetra = (letra) => {
-    const novaPalavra = palavraFormada + letra;
-    setPalavraFormada(novaPalavra);
+    const nova = palavraFormada + letra;
+    setPalavraFormada(nova);
 
-    if (novaPalavra.length === palavraCerta.length) {
-      if (novaPalavra === palavraCerta) {
-        setFeedback('Parabéns! Você formou a palavra! 🎉');
-        setTimeout(() => avançarPalavra(), 2000);
+    if (nova.length === palavraCerta.length) {
+      if (nova === palavraCerta) {
+        setFeedback('acerto');
+        somAcerto?.play();
+        setTimeout(() => setIndiceAtual(i => Math.min(i + 1, palavras.length - 1)), 1500);
       } else {
-        setFeedback('Ops! Tente novamente.');
-        setPalavraFormada(''); // Limpa a palavra formada caso o usuário erre
+        setFeedback('erro');
+        somErro?.play();
+        setTimeout(() => {
+          setPalavraFormada('');
+          setFeedback('');
+        }, 800);
       }
     }
   };
 
-  const avançarPalavra = () => {
-    const indexAtual = palavras.findIndex(p => p.palavra === palavraCerta);
-    if (indexAtual < palavras.length - 1) {
-      const novaPalavra = palavras[indexAtual + 1];
-      setPalavraCerta(novaPalavra.palavra);
-      setPalavraFormada('');
+  const apagarUltima = () => {
+    if (palavraFormada) {
+      setPalavraFormada(palavraFormada.slice(0, -1));
       setFeedback('');
-    } else {
-      setFeedback('Parabéns, você completou todas as palavras! 🎉');
     }
   };
 
-  const resetarPalavra = () => {
-    setPalavraFormada('');
-    setFeedback('');
-    setLetras(palavraCerta.split('').sort(() => Math.random() - 0.5));
-  };
+  const reiniciar = () => setIndiceAtual(0);
 
   return (
     <div className={styles.container}>
-      <h2>Forme a Palavra</h2>
+      <button onClick={() => router.back()} className={styles.botaoTopo}>
+        ← Voltar
+      </button>
 
-      <div className={styles.imagemPalavra}>
-        <img src={palavras.find(p => p.palavra === palavraCerta).imagem} alt={palavraCerta} className={styles.imagemPalavra} />
+      <h2 className={styles.titulo}>Forme a Palavra</h2>
+
+      <img src={palavras[indiceAtual].imagem} alt={palavraCerta} className={styles.imagemPalavra} />
+
+      <div className={`${styles.palavraFormada} ${feedback === 'acerto' ? styles.acerto : feedback === 'erro' ? styles.erro : ''}`}>
+        {palavraFormada}
       </div>
 
-      <div className={styles.palavraFormada}>{palavraFormada}</div>
-
       <div className={styles.letrasContainer}>
-        {letras.map((letra, index) => (
-          <button
-            key={index}
-            className={styles.botaoLetra}
-            onClick={() => adicionarLetra(letra)}
-          >
-            {letra}
+        {letras.map((l, i) => (
+          <button key={i} className={styles.botaoLetra} onClick={() => adicionarLetra(l)}>
+            {l}
           </button>
         ))}
       </div>
 
-      {feedback && <p className={styles.feedback}>{feedback}</p>}
+      <button onClick={apagarUltima} className={styles.botaoApagar}>
+        Apagar
+      </button>
 
-      {feedback && palavraCerta === palavras[palavras.length - 1].palavra && (
-        <button onClick={resetarPalavra} className={styles.botaoVoltar}>
-          Reiniciar Atividade
+      {feedback === 'acerto' && indiceAtual === palavras.length - 1 && (
+        <button onClick={reiniciar} className={styles.botaoReiniciar}>
+          Reiniciar
         </button>
       )}
     </div>
